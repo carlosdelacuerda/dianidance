@@ -1,0 +1,20 @@
+{
+  "Standalone Component Zoneless": {
+    "prefix": "stc-zl",
+    "body": [
+      "// ZONELESS Standalone Component",
+      "import { Component, signal } from '@angular/core';",
+      "",
+      "@Component({",
+      "  selector: '${1:app-component}',",
+      "  standalone: true,",
+      "  templateUrl: './${1:app-component}.component.html',",
+      "  changeDetection: ChangeDetectionStrategy.OnPush",
+      "})",
+      "export class ${2:AppComponent} {",
+      "  ${3:data} = signal(${4:initialValue});",
+      "}"
+    ],
+    "description": "Standalone Angular 21 zoneless component"
+  }
+}

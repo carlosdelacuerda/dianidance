@@ -1,0 +1,97 @@
+<footer class="bg-gray-900 text-gray-300 mt-auto">
+  <!-- Main Footer Content -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      <!-- About Section -->
+      <div>
+        <h3 class="text-white text-lg font-bold mb-4">Diani Dance</h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          Discover the magic of dance! Professional dance classes for all ages and levels. Join us and express yourself
+          through movement.
+        </p>
+        <div class="mt-4 flex gap-3">
+          <a *ngFor="let social of socialLinks" [href]="social.url"
+            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors duration-300 active:scale-95 cursor-pointer"
+            [title]="social.name">
+            {{ social.icon }}
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li *ngFor="let link of quickLinks">
+            <routerLink [routerLink]="link.path"
+              class="text-gray-400 hover:text-orange-500 transition-colors duration-300 text-sm cursor-pointer active:scale-95">
+              {{ link.label }}
+            </routerLink>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h4 class="text-white font-semibold mb-4">Services</h4>
+        <ul class="space-y-2">
+          <li *ngFor="let service of serviceLinks">
+            <a [href]="service.url"
+              class="text-gray-400 hover:text-orange-500 transition-colors duration-300 text-sm cursor-pointer active:scale-95">
+              {{ service.label }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h4 class="text-white font-semibold mb-4">Contact Info</h4>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li class="flex gap-2">
+            <span>📍</span>
+            <span>123 Dance Street, City, Country</span>
+          </li>
+          <li class="flex gap-2">
+            <span>📞</span>
+            <a href="tel:+1234567890" class="hover:text-orange-500 transition-colors cursor-pointer active:scale-95">
+              +1 (234) 567-890
+            </a>
+          </li>
+          <li class="flex gap-2">
+            <span>✉️</span>
+            <a href="mailto:info@dianidance.com"
+              class="hover:text-orange-500 transition-colors cursor-pointer active:scale-95">
+              info@dianidance.com
+            </a>
+          </li>
+          <li class="flex gap-2">
+            <span>⏰</span>
+            <span>Mon - Sun: 9am - 9pm</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-gray-800"></div>
+
+    <!-- Bottom Footer -->
+    <div class="mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-gray-400 text-sm">
+        &copy; {{ currentYear }} Diani Dance. All rights reserved.
+      </p>
+      <div class="flex gap-6 text-sm">
+        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors cursor-pointer active:scale-95">
+          Privacy Policy
+        </a>
+        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors cursor-pointer active:scale-95">
+          Terms & Conditions
+        </a>
+        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors cursor-pointer active:scale-95">
+          Cookie Policy
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
