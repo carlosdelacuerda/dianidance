@@ -4,21 +4,21 @@
 
       <div class="flex-shrink-0 flex items-center">
         <a routerLink="/" class="flex items-center">
-          <img src="/images/logo.svg" alt="Diani Dance" class="h-12 w-auto">
+          <img src="/images/logo.svg" alt="Diani Dance" class="h-12 w-auto logo-shadow">
         </a>
       </div>
 
       <div class="hidden md:flex space-x-8 items-center">
         @for (link of navLinks; track link.path) {
-        <a [routerLink]="link.path" routerLinkActive="text-brand-primary border-b-2 border-brand-primary"
+        <a [routerLink]="link.path" routerLinkActive="text-bg-main"
           [routerLinkActiveOptions]="{exact: link.path === '/'}"
-          class="text-sm font-medium text-gray-600 hover:text-brand-primary transition-colors pb-1">
+          class="text-sm font-medium text-dark hover:text-brand-primary transition-colors pb-1">
           {{ link.label }}
         </a>
         }
         <a routerLink="/booking"
-          class="ml-4 bg-brand-primary text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-brand-secondary transition-all shadow-md hover:shadow-lg">
-          BOOK NOW
+          class="ml-4 bg-brand-primary text-bg-main px-6 py-2 rounded-full text-sm font-bold hover:bg-bg-main hover:text-brand-dark transition-all shadow-md hover:shadow-lg">
+          BOOK A CLASS
         </a>
       </div>
 
@@ -47,7 +47,7 @@
       <div class="pt-4 pb-2 px-3">
         <a routerLink="/booking" (click)="isMenuOpen.set(false)"
           class="block text-center bg-brand-primary text-white px-6 py-3 rounded-xl font-bold">
-          BOOK NOW
+          BOOK A CLASS
         </a>
       </div>
     </div>

@@ -2,13 +2,13 @@
 
 @theme {
   /* 1. Colores de Marca (Ajusta los hex según tu logo) */
-  --color-brand-primary: #ed6917; /* Violeta vibrante */
+  --color-brand-primary: #c1272d; /* Violeta vibrante */
   --color-brand-secondary: #ffef26; /* Rosa intenso */
   --color-brand-dark: #1c1c1c; /* Azul casi negro para textos fuertes */
 
   /* 2. Colores de Fondo y Superficie */
-  --color-bg-main: #ffffff;
-  --color-bg-soft: #dfe4cc;
+  --color-bg-main: #f5f1e6;
+  --color-bg-soft: #c98a2e;
 
   /* 3. Tipografías */
   /* Nota: Recuerda importar las fuentes en tu index.html o con @import */
@@ -39,7 +39,8 @@
     @apply font-body bg-bg-main text-brand-dark antialiased;
   }
 
-  h1 {
+  h1,
+  h2 {
     @apply font-sans font-bold;
     font-family:
       var(--font-caveat),
@@ -52,7 +53,6 @@
       sans-serif;
   }
 
-  h2,
   h3,
   h4 {
     @apply font-sans font-bold;
@@ -66,4 +66,11 @@
       Arial,
       sans-serif;
   }
+}
+
+.logo-shadow {
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 1));
+}
+.logo-shadow-2 {
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 1));
 }

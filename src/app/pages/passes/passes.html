@@ -1,0 +1,174 @@
+<section class="pt-32 pb-16 px-4 bg-bg-main">
+  <div class="max-w-4xl mx-auto text-center">
+    <h1 class="text-6xl md:text-8xl font-caveat font-bold text-brand-dark mb-6">
+      <span class="text-brand-primary">Packages</span>
+    </h1>
+    <p class="text-lg md:text-xl text-gray-600">
+      Choose the plan that fits your rhythm and goals
+    </p>
+  </div>
+</section>
+
+<section class="py-20 px-4 bg-bg-soft">
+  <h2 class="text-4xl font-display font-bold text-brand-dark mb-16 text-center">
+    All our classes include:
+  </h2>
+  <div class="mb-6 max-w-6xl mx-auto bg-bg-main rounded-3xl p-12 shadow-lg">
+    <ul class="space-y-2 text-xl text-brand-dark">
+      <li class="flex gap-2 pb-4">
+        <span class="material-icons text-xl text-brand-primary">directions_car</span>
+        <span>A <b>pickup</b> before the class, so you can start your dance journey stress-free and ready to enjoy every
+          moment</span>
+      </li>
+      <li class="flex gap-2 pb-4">
+        <span class="material-icons text-xl text-brand-primary">local_bar</span>
+        <span>A refreshing soft <b>drink</b> or juice to keep your energy flowing and celebrate each small victory on
+          the floor.</span>
+      </li>
+      <li class="flex gap-2 pb-4">
+        <span class="material-icons text-xl text-brand-primary">sports_gymnastics</span>
+        <span>One hour of expert dance <b>instruction</b>, where every step brings you closer to confidence, rhythm, and
+          fun.</span>
+      </li>
+      <li class="flex gap-2 pb-4">
+        <span class="material-icons text-xl text-brand-primary">arrow_forward</span>
+        <span>A <b>drop-off</b> after the class, leaving you relaxed and smiling as you reflect on your new
+          moves.</span>
+      </li>
+    </ul>
+    <span class="text-sm text-gray-600 mt-4 block">*Please note: Pickup and drop-off are only available within the Diani
+      area</span>
+  </div>
+</section>
+
+<section class="py-24 bg-[#f5f1e8]">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-6">
+      Choose Your Dance Journey
+    </h2>
+    <p class="text-center text-gray-600 max-w-2xl mx-auto mb-16">
+      Every option is designed to make your time in Diani simple, enjoyable and unforgettable.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-10">
+
+      <div class="bg-white rounded-3xl shadow-lg p-10 flex flex-col h-full">
+        <div class="flex-grow">
+          <h3 class="text-5xl font-semibold mb-2 font-caveat text-brand-primary">Single Dance Experience</h3>
+          <p class="text-sm uppercase tracking-wide text-gray-500 mb-6">1 Experience</p>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            You just want to try it. No pressure. No commitment.
+            We pick you up, guide you through a full one-hour class,
+            share a refreshing drink, and take you back with new moves and a smile.
+          </p>
+          <div class="space-y-2 text-gray-600 mb-6">
+            <p><strong>Included:</strong></p>
+            <p>• Pickup before the class</p>
+            <p>• Drop-off after the class</p>
+            <p>• 1-hour guided dance lesson</p>
+            <p>• Soft drink or juice</p>
+          </div>
+        </div>
+        <div class="mt-auto pt-6 border-t border-gray-50">
+          <p class="text-4xl font-bold mb-6">
+            <span class="text-lg font-medium text-gray-500 mr-1">USD</span>$25
+          </p>
+          <button (click)="selectPackage('1')"
+            class="cursor-pointer  w-full bg-brand-primary text-bg-main py-4 rounded-xl font-semibold hover:opacity-90 transition shadow-md">
+            Book Single Experience
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-xl p-10 flex flex-col h-full border-2 border-transparent transition-all">
+        <div class="flex-grow">
+          <h3 class="text-5xl font-semibold mb-2 font-caveat text-brand-primary">Dance Starter</h3>
+          <p class="text-sm uppercase tracking-wide text-gray-500 mb-6">4 Classes + 1 Social Event</p>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            This is where things start to feel real.
+            Four complete class experiences to build your confidence,
+            plus we take you to a social dance event and stay with you,
+            guiding and supporting you on the dance floor.
+          </p>
+          <div class="space-y-2 text-gray-600 mb-6">
+            <p><strong>Included:</strong></p>
+            <p>• Everything from the Single Experience (each class)</p>
+            <p>• Guided attendance to 1 social event</p>
+            <p>• Personal feedback during the event</p>
+            <p>• Class tickets can be shared</p>
+          </div>
+        </div>
+        <div class="mt-auto pt-6 border-t border-gray-50">
+          <p class="text-4xl font-bold mb-6">
+            <span class="text-lg font-medium text-gray-500 mr-1">USD</span>$90
+          </p>
+          <button (click)="selectPackage('4')"
+            class="cursor-pointer w-full bg-brand-primary text-bg-main py-4 rounded-xl font-semibold hover:opacity-90 transition shadow-md">
+            Reserve My Dance Starter
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-lg p-10 flex flex-col h-full">
+        <div class="flex-grow">
+          <h3 class="text-5xl font-semibold mb-2 font-caveat text-brand-primary">Full Immersion</h3>
+          <p class="text-sm uppercase tracking-wide text-gray-500 mb-6">8 Classes + 2 Social Events</p>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            You want the full experience. More practice. More confidence.
+            More connection. Eight guided classes and two social events
+            where you step onto the dance floor with real support
+            and leave feeling like a dancer.
+          </p>
+          <div class="space-y-2 text-gray-600 mb-6">
+            <p><strong>Included:</strong></p>
+            <p>• Everything from the Single Experience (each class)</p>
+            <p>• Guided attendance to 2 social events</p>
+            <p>• Ongoing support and corrections</p>
+            <p>• Class tickets can be shared</p>
+          </div>
+        </div>
+        <div class="mt-auto pt-6 border-t border-gray-50">
+          <p class="text-4xl font-bold mb-6">
+            <span class="text-lg font-medium text-gray-500 mr-1">USD</span>$160
+          </p>
+          <button (click)="selectPackage('8')"
+            class="cursor-pointer w-full bg-brand-primary text-bg-main py-4 rounded-xl font-semibold hover:opacity-90 transition shadow-md">
+            Start My Full Immersion
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-lg p-10 flex flex-col h-full">
+        <div class="flex-grow">
+          <h3 class="text-5xl font-semibold mb-2 font-caveat text-brand-primary">Private Group Experience</h3>
+          <p class="text-sm uppercase tracking-wide text-gray-500 mb-6">1 Group Experience</p>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Perfect for friends, couples, birthdays or small groups
+            who want to enjoy something different together.
+            Same smooth experience, shared energy.
+          </p>
+          <div class="space-y-2 text-gray-600 mb-6">
+            <p><strong>Included:</strong></p>
+            <p>• Minimum 4 people</p>
+            <p>• Pickup & drop-off (same location required)</p>
+            <p>• 1-hour group dance class</p>
+            <p>• Soft drink or juice per person</p>
+          </div>
+        </div>
+        <div class="mt-auto pt-6 border-t border-gray-50">
+          <p class="text-4xl font-bold mb-6">
+            <span class="text-lg font-medium text-gray-500 mr-1">USD</span>$15
+            <span class="text-base font-normal text-gray-400">/ person</span>
+          </p>
+          <button (click)="selectPackage('group')"
+            class="cursor-pointer w-full bg-brand-primary text-bg-main py-4 rounded-xl font-semibold hover:opacity-90 transition shadow-md">
+            Book This Group Experience
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<dd-top-footer></dd-top-footer>

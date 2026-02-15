@@ -11,8 +11,9 @@ export class Navbar {
 
   navLinks = [
     { path: '/', label: 'HOME' },
-    { path: '/about-us', label: 'ABOUT US' },
-    { path: '/offers', label: 'CLASSES & OFFERS' },
+    // { path: '/about-us', label: 'ABOUT US' },
+    { path: '/classes', label: 'CLASSES & EVENTS' },
+    { path: '/packages', label: 'PACKAGES' },
     { path: '/contact', label: 'CONTACT' },
   ];
 

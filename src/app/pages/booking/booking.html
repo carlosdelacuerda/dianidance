@@ -1,1 +1,137 @@
-<p>booking works!</p>
+<div class="min-h-screen bg-slate-50 flex items-center justify-center p-6">
+  <div class="w-full max-w-lg bg-white rounded-2xl shadow-xl p-8 border border-slate-100">
+
+    <header class="mb-8 text-center">
+      <h2 class="text-3xl font-bold text-slate-800 tracking-tight">Book Your Class</h2>
+      <p class="text-slate-500 mt-2">Please fill in the details to secure your spot.</p>
+    </header>
+
+    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="space-y-5">
+
+      <!-- Nombre -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-sm font-semibold text-slate-700 ml-1">Full Name*</label>
+        <input type="text" formControlName="nombre" placeholder="e.g. John Doe"
+          class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+          [class.border-red-500]="formSubmitted() && bookingForm.get('nombre')?.invalid">
+        @if (formSubmitted() && bookingForm.get('nombre')?.invalid) {
+        <span class="text-xs font-medium text-red-500 ml-1">Name is required.</span>
+        }
+      </div>
+
+      <!-- Email y Teléfono -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-sm font-semibold text-slate-700 ml-1">Email*</label>
+        <input type="email" formControlName="email" placeholder="your@email.com"
+          class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+          [class.border-red-500]="formSubmitted() && bookingForm.get('email')?.invalid">
+        @if (formSubmitted() && bookingForm.get('email')?.invalid) {
+        <span class="text-xs font-medium text-red-500 ml-1">Valid email is required.</span>
+        }
+      </div>
+
+      <div class="flex flex-col gap-1.5">
+        <label class="text-sm font-semibold text-slate-500 ml-1 italic">Phone (optional)</label>
+        <input type="tel" formControlName="telefono" placeholder="+1 234..."
+          class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+      </div>
+
+      <!-- Class Type -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-sm font-semibold text-slate-700 ml-1">Class Type*</label>
+        <div class="relative">
+          <select formControlName="classType"
+            class="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all appearance-none cursor-pointer"
+            [class.border-red-500]="formSubmitted() && bookingForm.get('classType')?.invalid">
+            <option value="">Select a style...</option>
+            <option value="salsa">Salsa</option>
+            <option value="bachata">Bachata</option>
+            <option value="kizomba">Kizomba</option>
+            <option value="unknown">I don't know yet</option>
+          </select>
+          <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+        @if (formSubmitted() && bookingForm.get('classType')?.invalid) {
+        <span class="text-xs font-medium text-red-500 ml-1">Please select a class type.</span>
+        }
+      </div>
+
+      <!-- Pack -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-sm font-semibold text-slate-700 ml-1">Pack*</label>
+        <div class="relative">
+          <select formControlName="pack" (change)="selectPackage()"
+            class="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all appearance-none cursor-pointer"
+            [class.border-red-500]="formSubmitted() && bookingForm.get('pack')?.invalid">
+            <option value="">Choose a pack...</option>
+            <option value="1">Single Class</option>
+            <option value="4">4 Classes + 1 Event</option>
+            <option value="8">8 Classes + 2 Events</option>
+            <option value="group">Group class</option>
+          </select>
+
+          <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+
+        @if (formSubmitted() && bookingForm.get('pack')?.invalid) {
+        <span class="text-xs font-medium text-red-500 ml-1">Please select a pack.</span>
+        }
+      </div>
+
+
+      <!-- Fecha y Hora -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex flex-col gap-1.5">
+          <label class="text-sm font-semibold text-slate-700 ml-1">Date*</label>
+          <input type="date" formControlName="fecha"
+            class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+            [class.border-red-500]="formSubmitted() && bookingForm.get('fecha')?.invalid">
+          @if (formSubmitted() && bookingForm.get('fecha')?.invalid) {
+          <span class="text-xs font-medium text-red-500 ml-1">Date is required.</span>
+          }
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="text-sm font-semibold text-slate-700 ml-1">Time*</label>
+          <div class="relative">
+            <select formControlName="hora"
+              class="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all appearance-none cursor-pointer"
+              [class.border-red-500]="formSubmitted() && bookingForm.get('hora')?.invalid">
+              <option value="">Select time</option>
+              @for (h of hours; track h) {
+              <option [value]="h">{{ h }}</option>
+              }
+            </select>
+            <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+          @if (formSubmitted() && bookingForm.get('hora')?.invalid) {
+          <span class="text-xs font-medium text-red-500 ml-1">Time is required.</span>
+          }
+        </div>
+      </div>
+
+      <button type="submit"
+        class="w-full mt-4 bg-brand-primary cursor-pointer text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-indigo-200 transition-all active:scale-[0.98]">
+        Confirm Booking
+      </button>
+
+    </form>
+
+    <p class="text-center text-xs text-slate-400 mt-6 uppercase tracking-widest">
+      Secure Checkout
+    </p>
+  </div>
+</div>

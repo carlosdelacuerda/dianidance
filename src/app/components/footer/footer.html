@@ -9,7 +9,7 @@
           Discover the magic of dance! Professional dance classes for all ages and levels. Join us and express yourself
           through movement.
         </p>
-        <div class="mt-4 flex gap-3">
+        <div class="mt-4 flex gap-3 hidden">
           <a *ngFor="let social of socialLinks" [href]="social.url"
             class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors duration-300 active:scale-95 cursor-pointer"
             [title]="social.name">
@@ -36,10 +36,9 @@
         <h4 class="text-white font-semibold mb-4">Services</h4>
         <ul class="space-y-2">
           <li *ngFor="let service of serviceLinks">
-            <a [href]="service.url"
-              class="text-gray-400 hover:text-orange-500 transition-colors duration-300 text-sm cursor-pointer active:scale-95">
+            <span class="text-gray-400  text-sm active:scale-95">
               {{ service.label }}
-            </a>
+            </span>
           </li>
         </ul>
       </div>
@@ -49,25 +48,25 @@
         <h4 class="text-white font-semibold mb-4">Contact Info</h4>
         <ul class="space-y-2 text-sm text-gray-400">
           <li class="flex gap-2">
-            <span>📍</span>
-            <span>123 Dance Street, City, Country</span>
+            <span class="material-icons text-3xl">location_on</span>
+            <span>Diani Beach, Kwale County, Kenya</span>
           </li>
           <li class="flex gap-2">
-            <span>📞</span>
-            <a href="tel:+1234567890" class="hover:text-orange-500 transition-colors cursor-pointer active:scale-95">
-              +1 (234) 567-890
+            <span class="material-icons text-3xl">smartphone</span>
+            <a href="tel:+254748191194" class="hover:text-orange-500 transition-colors cursor-pointer active:scale-95">
+              +254 748 191 194
             </a>
           </li>
           <li class="flex gap-2">
-            <span>✉️</span>
-            <a href="mailto:info@dianidance.com"
+            <span class="material-icons text-3xl">mail</span>
+            <a href="mailto:hi@dianidance.com"
               class="hover:text-orange-500 transition-colors cursor-pointer active:scale-95">
-              info@dianidance.com
+              hi@dianidance.com
             </a>
           </li>
           <li class="flex gap-2">
-            <span>⏰</span>
-            <span>Mon - Sun: 9am - 9pm</span>
+            <span class="material-icons text-3xl">access_time</span>
+            <span>Mon - Sun: 7am - 6pm</span>
           </li>
         </ul>
       </div>
@@ -82,13 +81,13 @@
         &copy; {{ currentYear }} Diani Dance. All rights reserved.
       </p>
       <div class="flex gap-6 text-sm">
-        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors cursor-pointer active:scale-95">
+        <a href="/privacy" class="text-gray-400 hover:text-orange-500 transition-colors cursor-pointer active:scale-95">
           Privacy Policy
         </a>
-        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors cursor-pointer active:scale-95">
+        <a href="/terms" class="text-gray-400 hover:text-orange-500 transition-colors cursor-pointer active:scale-95">
           Terms & Conditions
         </a>
-        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors cursor-pointer active:scale-95">
+        <a href="/cookies" class="text-gray-400 hover:text-orange-500 transition-colors cursor-pointer active:scale-95">
           Cookie Policy
         </a>
       </div>

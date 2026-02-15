@@ -20,15 +20,16 @@ export class Footer {
 
   quickLinks = [
     { label: 'Home', path: '/' },
-    { label: 'About Us', path: '/about-us' },
-    { label: 'Classes & Offers', path: '/offers' },
+    // { label: 'About Us', path: '/about-us' },
+    { label: 'Classes & Events', path: '/classes' },
+    { label: 'Packages', path: '/packages' },
     { label: 'Contact', path: '/contact' },
+    { label: 'Booking', path: '/booking' },
   ];
 
   serviceLinks = [
     { label: 'Private Classes', url: '#' },
     { label: 'Group Sessions', url: '#' },
     { label: 'Events', url: '#' },
-    { label: 'Packages', url: '#' },
   ];
 }
