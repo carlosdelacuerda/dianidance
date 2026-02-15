@@ -2,6 +2,7 @@ import { Component, OnInit, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 import { PackageService } from '../../services/package.service';
+import { ExchangeService } from '../../services/exchange.service';
 
 @Component({
   selector: 'dd-booking',
@@ -13,9 +14,14 @@ import { PackageService } from '../../services/package.service';
 export class Booking implements OnInit {
   private fb = inject(FormBuilder);
   public packageService = inject(PackageService);
+  private exchangeService = inject(ExchangeService);
+
+  private kesRate: number = 0;
 
   // SIGNALS
   formSubmitted = signal(false);
+  dolarsPrice = signal(0);
+  khsPrice = signal(0);
 
   hours = ['8am - 9am', '11am - 12pm', '4pm - 5pm', '6pm - 7pm'];
 
@@ -34,7 +40,12 @@ export class Booking implements OnInit {
   });
 
   ngOnInit(): void {
-    console.log(this.packageService.selectedPackageSignal());
+    this.exchangeService.getRates().subscribe({
+      next: (data) => {
+        this.kesRate = data.conversion_rates.KES;
+      },
+      error: (err) => console.error('Error cargando tasa de cambio', err),
+    });
   }
 
   selectPackage() {
@@ -44,6 +55,35 @@ export class Booking implements OnInit {
     const selectedPack = selectedValue ?? '';
     this.packageService.setSelectedPackage(selectedPack);
     this.bookingForm.get('pack')?.setValue(selectedPack);
+    this.calculatePrice();
+  }
+
+  calculatePrice() {
+    const selectedPack = this.bookingForm.get('pack')?.value;
+    const groupSize = this.bookingForm.get('groupSize')?.value || 0;
+
+    switch (selectedPack) {
+      case '1':
+        this.dolarsPrice.set(25);
+        break;
+      case 'group':
+        const pricePerPerson = 15 * groupSize;
+        this.dolarsPrice.set(pricePerPerson);
+        break;
+      case '4':
+        this.dolarsPrice.set(90);
+        break;
+      case '8':
+        this.dolarsPrice.set(160);
+        break;
+    }
+
+    this.khsPrice.set(this.convertToKES(this.dolarsPrice()));
+  }
+
+  convertToKES(amountInUSD: number): number {
+    if (this.kesRate === 0) return 0; // Por si la API aún no responde
+    return Math.round(amountInUSD * this.kesRate);
   }
 
   onSubmit(): void {
