@@ -4,12 +4,20 @@
     {
       "src": "dist/dianidance/server/server.mjs",
       "use": "@vercel/node"
+    },
+    {
+      "src": "dist/dianidance/browser/**/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
       "dest": "dist/dianidance/server/server.mjs"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "dist/dianidance/browser/assets/$1"
     }
   ]
 }
