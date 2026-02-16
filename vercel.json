@@ -2,18 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "installCommand": "pnpm install",
-        "buildCommand": "pnpm build"
-      }
+      "src": "dist/dianidance/server/server.mjs",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/dist/dianidance/server/server.mjs"
+      "dest": "dist/dianidance/server/server.mjs"
     }
   ]
 }
