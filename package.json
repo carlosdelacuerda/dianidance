@@ -2,9 +2,12 @@
   "name": "dianidance",
   "version": "0.0.0",
   "scripts": {
-    "build": "ng build && ng run dianidance:server",
-    "start": "node dist/dianidance/server/server.mjs",
-    "dev": "ng serve",
+    "ng": "ng",
+    "dev": "ng dev",
+    "start": "pnpm run build && node dist/dianidance/server/server.mjs",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "serve:ssr": "node dist/dianidance/server/server.mjs",
     "lint": "ng lint"
   },
   "prettier": {
