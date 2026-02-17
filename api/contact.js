@@ -5,9 +5,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const { name, email, message } = req.body;
+  const message = req.body;
 
-  if (!name || !email || !message) {
+  if (!message) {
     return res.status(400).json({ message: 'Faltan campos' });
   }
 
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
       from: `"Form Diani Dance" <carlosdelacuerda@gmail.com>`, // sigue siendo tu correo del dominio
       to: 'carlosdelacuerda@gmail.com', // aquí recibes el email
       subject: 'Nuevo mensaje de formulario',
-      text: `Nombre: ${name}\nEmail: ${email}\nMensaje: ${message}`,
+      text: `${message}`,
     });
 
     res.status(200).json({ message: 'Email enviado correctamente' });
