@@ -3,7 +3,8 @@ import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { loadingInterceptor } from './interceptors/loading.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,6 +17,8 @@ export const appConfig: ApplicationConfig = {
       }),
     ),
     provideClientHydration(withEventReplay()),
-    provideHttpClient(), // ✅ añadir para HttpClient
+    provideHttpClient(
+      withInterceptors([loadingInterceptor]), // <-- Aquí registras el interceptor
+    ),
   ],
 };
