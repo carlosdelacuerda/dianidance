@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 import { PackageService } from '../../services/package.service';
 import { ExchangeService } from '../../services/exchange.service';
+import { FormsService } from '../../services/forms.service';
 
 @Component({
   selector: 'dd-booking',
@@ -15,6 +16,7 @@ export class Booking implements OnInit {
   private fb = inject(FormBuilder);
   public packageService = inject(PackageService);
   private exchangeService = inject(ExchangeService);
+  private formsService = inject(FormsService);
 
   private kesRate: number = 0;
 
@@ -91,6 +93,7 @@ export class Booking implements OnInit {
 
     if (this.bookingForm.valid) {
       console.log('Datos listos para enviar:', this.bookingForm.value);
+      this.formsService.onSubmit(this.bookingForm.value);
     } else {
       console.warn('El formulario contiene errores.');
     }

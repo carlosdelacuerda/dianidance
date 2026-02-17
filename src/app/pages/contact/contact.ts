@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './contact.css',
 })
 export class Contact {
-
+  sendForm() {
+    alert('Formulario enviado');
+  }
 }
