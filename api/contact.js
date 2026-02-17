@@ -27,7 +27,7 @@ export default async function handler(req, res) {
       from: `"Form Diani Dance" <carlosdelacuerda@gmail.com>`, // sigue siendo tu correo del dominio
       to: 'carlosdelacuerda@gmail.com', // aquí recibes el email
       subject: 'Nuevo mensaje de formulario',
-      text: `${message}`,
+      text: `${JSON.stringify(formValue)}`,
     });
 
     res.status(200).json({ message: 'Email enviado correctamente' });
