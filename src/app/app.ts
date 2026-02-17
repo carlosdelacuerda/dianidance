@@ -5,6 +5,7 @@ import { Footer } from './components/footer/footer';
 import { LoaderComponent } from './components/loader.component.';
 import { ModalSent } from './components/modal-sent.component.ts/modal-sent.component';
 import { FormsService } from './services/forms.service';
+import { LoadingService } from './services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -17,4 +18,5 @@ export class AppComponent {
   protected readonly title = signal('Diani Dance');
 
   formsService = inject(FormsService);
+  loaderService = inject(LoadingService);
 }

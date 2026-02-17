@@ -10,11 +10,23 @@ export class LoadingService {
 
   show() {
     this.activeRequests++;
+    console.log('Requests activas (+):', this.activeRequests);
     this.isLoading.set(true);
+
+    setTimeout(() => {
+      if (this.activeRequests > 0) {
+        console.warn('Failsafe: Forzando ocultación de loading');
+        this.activeRequests = 0;
+        this.isLoading.set(false);
+      }
+    }, 10000); // 10 segundos
   }
 
   hide() {
+    // Evitamos números negativos
     this.activeRequests = Math.max(0, this.activeRequests - 1);
+    console.log('Requests activas (-):', this.activeRequests);
+
     if (this.activeRequests === 0) {
       this.isLoading.set(false);
     }
