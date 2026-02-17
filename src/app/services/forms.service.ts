@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal, Signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormsService {
+  modalSuccess = signal(true);
+
   private http = inject(HttpClient);
   // Cambia la URL por la ruta completa de tu servidor Node
   private apiUrl = '/api/contact';
@@ -13,7 +15,10 @@ export class FormsService {
     // Aquí enviamos el valor limpio (el JSON)
     this.http.post(this.apiUrl, formValue).subscribe({
       next: (res: any) => {
-        alert(res.message || 'Mensaje enviado con éxito');
+        this.modalSuccess.set(true);
+        setTimeout(() => {
+          this.modalSuccess.set(false);
+        }, 2000);
       },
       error: (err) => {
         console.error('Detalle del error:', err);

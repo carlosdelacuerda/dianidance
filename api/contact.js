@@ -36,7 +36,7 @@ export default async function handler(req, res) {
       text: formattedMessage,
     });
 
-    res.status(200).json({ message: 'Email enviado correctamente' });
+    // res.status(200).json({ message: 'Email enviado correctamente' });
   } catch (error) {
     // Esto imprimirá el error real en los logs de Vercel/Node para que sepas qué falló
     console.error('Detalle del error de Nodemailer:', error);

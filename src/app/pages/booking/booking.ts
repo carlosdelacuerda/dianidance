@@ -1,6 +1,5 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
 import { PackageService } from '../../services/package.service';
 import { ExchangeService } from '../../services/exchange.service';
 import { FormsService } from '../../services/forms.service';
@@ -8,7 +7,7 @@ import { FormsService } from '../../services/forms.service';
 @Component({
   selector: 'dd-booking',
   standalone: true,
-  imports: [ReactiveFormsModule, JsonPipe],
+  imports: [ReactiveFormsModule],
   templateUrl: './booking.html',
   styleUrl: './booking.css',
 })

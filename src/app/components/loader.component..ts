@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
           ></div>
           <div class="absolute inset-0 h-16 w-16 animate-pulse rounded-full bg-indigo-400/20"></div>
           <span class="mt-4 font-semibold text-white tracking-widest uppercase text-xs"
-            >Procesando...</span
+            >Sending...</span
           >
         </div>
       </div>
