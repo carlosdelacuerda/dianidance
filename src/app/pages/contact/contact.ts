@@ -27,7 +27,7 @@ export class Contact implements OnInit {
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       phone: [''],
-      message: ['', [Validators.required, Validators.minLength(10)]],
+      message: ['', [Validators.required]],
     });
   }
 
@@ -37,6 +37,7 @@ export class Contact implements OnInit {
     if (this.contactForm.valid) {
       console.log('Datos listos para enviar:', this.contactForm.value);
       this.formsService.onSubmit(this.contactForm.value);
+      this.initForm();
     } else {
       console.warn('El formulario contiene errores.');
     }

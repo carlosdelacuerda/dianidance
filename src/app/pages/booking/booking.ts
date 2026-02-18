@@ -1,5 +1,5 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PackageService } from '../../services/package.service';
 import { ExchangeService } from '../../services/exchange.service';
 import { FormsService } from '../../services/forms.service';
@@ -26,26 +26,32 @@ export class Booking implements OnInit {
 
   hours = ['8am - 9am', '11am - 12pm', '4pm - 5pm', '6pm - 7pm'];
 
-  bookingForm = this.fb.group({
-    nombre: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    telefono: [''],
-    classType: ['', Validators.required],
-    pack: [this.packageService.selectedPackageSignal(), Validators.required],
-    groupSize: [
-      4,
-      this.packageService.selectedPackageSignal() === 'group' ? Validators.required : [],
-    ],
-    fecha: ['', Validators.required],
-    hora: ['', Validators.required],
-  });
+  bookingForm!: FormGroup;
 
   ngOnInit(): void {
+    this.initForm();
     this.exchangeService.getRates().subscribe({
       next: (data) => {
         this.kesRate = data.conversion_rates.KES;
+        this.calculatePrice();
       },
       error: (err) => console.error('Error cargando tasa de cambio', err),
+    });
+  }
+
+  initForm(): void {
+    this.bookingForm = this.fb.group({
+      nombre: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      telefono: [''],
+      classType: ['', Validators.required],
+      pack: [this.packageService.selectedPackageSignal(), Validators.required],
+      groupSize: [
+        4,
+        this.packageService.selectedPackageSignal() === 'group' ? Validators.required : [],
+      ],
+      fecha: ['', Validators.required],
+      hora: ['', Validators.required],
     });
   }
 
@@ -93,6 +99,7 @@ export class Booking implements OnInit {
     if (this.bookingForm.valid) {
       console.log('Datos listos para enviar:', this.bookingForm.value);
       this.formsService.onSubmit(this.bookingForm.value);
+      this.initForm();
     } else {
       console.warn('El formulario contiene errores.');
     }
