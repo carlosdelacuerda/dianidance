@@ -19,6 +19,8 @@ export class Home implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) return; // solo servidor
+
     const script = this.document.createElement('script');
     script.type = 'application/ld+json';
     script.text = JSON.stringify(this.schemaService.getFaqSchema());
