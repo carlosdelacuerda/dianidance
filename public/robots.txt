@@ -1,0 +1,10 @@
+# public/robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://dianidance.com/sitemap.xml
