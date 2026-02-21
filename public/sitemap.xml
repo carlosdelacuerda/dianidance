@@ -2,17 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dianidance.com/</loc>
+    <lastmod>2026-02-21</lastmod>
+  </url>
+  <url>
+    <loc>https://dianidance.com/things-to-do-in-diani</loc>
+    <lastmod>2026-02-21</lastmod>
   </url>
   <url>
     <loc>https://dianidance.com/classes</loc>
+    <lastmod>2026-02-21</lastmod>
   </url>
   <url>
     <loc>https://dianidance.com/packages</loc>
+    <lastmod>2026-02-21</lastmod>
   </url>
   <url>
     <loc>https://dianidance.com/contact</loc>
+    <lastmod>2026-02-21</lastmod>
   </url>
   <url>
     <loc>https://dianidance.com/booking</loc>
+    <lastmod>2026-02-21</lastmod>
+  </url>
+  <url>
+    <loc>https://dianidance.com/privacy</loc>
+    <lastmod>2026-02-21</lastmod>
+  </url>
+  <url>
+    <loc>https://dianidance.com/terms</loc>
+    <lastmod>2026-02-21</lastmod>
+  </url>
+  <url>
+    <loc>https://dianidance.com/cookies</loc>
+    <lastmod>2026-02-21</lastmod>
   </url>
 </urlset>

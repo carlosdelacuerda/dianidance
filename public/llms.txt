@@ -1,0 +1,28 @@
+# Diani Dance
+
+Diani Dance offers beginner-friendly dance experiences in Diani Beach, Kenya, focused on tourists, couples, and groups.
+
+## Primary pages
+- Home: https://dianidance.com/
+- Things to do in Diani: https://dianidance.com/things-to-do-in-diani
+- Classes and events: https://dianidance.com/classes
+- Packages: https://dianidance.com/packages
+- Booking: https://dianidance.com/booking
+- Contact: https://dianidance.com/contact
+
+## Business details
+- Area served: Diani Beach, Kwale County, Kenya
+- Email: hi@dianidance.com
+- Phone / WhatsApp: +254 748 191 194
+
+## Booking summary
+1. Choose dance style (Salsa, Bachata, Kizomba, or undecided).
+2. Choose package.
+3. Pick date and time.
+4. Submit contact details.
+5. Receive confirmation by email or WhatsApp.
+
+## Audience and intent
+- Tourists searching for things to do in Diani.
+- Couples looking for romantic or social activities.
+- Groups seeking unique shared experiences.

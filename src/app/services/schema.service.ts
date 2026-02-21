@@ -1,8 +1,29 @@
 // src/app/services/schema.service.ts
-import { Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Injectable, inject } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class SchemaService {
+  private document = inject(DOCUMENT);
+
+  getWebsiteSchema() {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'Diani Dance',
+      url: 'https://dianidance.com',
+      inLanguage: 'en',
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: 'https://dianidance.com/?q={search_term_string}',
+        },
+        'query-input': 'required name=search_term_string',
+      },
+    };
+  }
+
   getSchema() {
     return {
       '@context': 'https://schema.org',
@@ -32,52 +53,178 @@ export class SchemaService {
     };
   }
 
-  getFaqSchema() {
+  getBreadcrumbSchema(items: Array<{ name: string; url: string }>) {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: items.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        item: item.url,
+      })),
+    };
+  }
+
+  getFaqPageSchema(faqs: Array<{ question: string; answer: string }>) {
     return {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'What are the best things to do in Diani Beach?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Diani Beach offers relaxing beach time, sunset experiences, cultural activities and unique dance classes. Many visitors look for interactive and social experiences beyond the beach, such as Latin and African dance sessions.',
-          },
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
         },
-        {
-          '@type': 'Question',
-          name: 'Are there unique activities in Diani besides the beach?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes. Beyond relaxing on the sand, visitors can enjoy cultural experiences, evening social events and dance classes that combine fun, movement and local atmosphere.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Is Diani Beach good for couples?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Diani Beach is ideal for couples looking for romantic sunsets, private experiences and fun activities together such as partner dance classes.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'What can I do in Diani at night?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'In the evening, visitors can enjoy social events, beach dinners, and dance experiences that create a lively and memorable night in Diani.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'What are fun group activities in Diani Beach?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Groups can enjoy beach games, social gatherings and interactive activities like dance sessions that are perfect for friends traveling together.',
-          },
-        },
-      ],
+      })),
     };
+  }
+
+  getServiceSchema(config: {
+    name: string;
+    description: string;
+    url: string;
+    areaServed?: string;
+    offers?: Array<{
+      name: string;
+      description?: string;
+      price: number;
+      priceCurrency: string;
+      url?: string;
+    }>;
+  }) {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      serviceType: 'Dance experience for tourists in Diani Beach',
+      name: config.name,
+      description: config.description,
+      provider: {
+        '@type': 'DanceSchool',
+        name: 'Diani Dance',
+        url: 'https://dianidance.com',
+      },
+      areaServed: {
+        '@type': 'Place',
+        name: config.areaServed ?? 'Diani Beach',
+      },
+      url: config.url,
+      offers:
+        config.offers?.map((offer) => ({
+          '@type': 'Offer',
+          name: offer.name,
+          description: offer.description,
+          price: offer.price,
+          priceCurrency: offer.priceCurrency,
+          availability: 'https://schema.org/InStock',
+          url: offer.url ?? config.url,
+        })) ?? [],
+    };
+  }
+
+  getItemListSchema(config: {
+    name: string;
+    url: string;
+    items: Array<{ name: string; url: string; description?: string }>;
+  }) {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: config.name,
+      url: config.url,
+      itemListOrder: 'https://schema.org/ItemListOrderAscending',
+      numberOfItems: config.items.length,
+      itemListElement: config.items.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Thing',
+          name: item.name,
+          url: item.url,
+          description: item.description,
+        },
+      })),
+    };
+  }
+
+  getHowToSchema(config: {
+    name: string;
+    description: string;
+    totalTime?: string;
+    supply?: string[];
+    tool?: string[];
+    steps: Array<{ name: string; text: string; url?: string }>;
+  }) {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: config.name,
+      description: config.description,
+      totalTime: config.totalTime,
+      supply: config.supply?.map((item) => ({ '@type': 'HowToSupply', name: item })) ?? [],
+      tool: config.tool?.map((item) => ({ '@type': 'HowToTool', name: item })) ?? [],
+      step: config.steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        name: step.name,
+        text: step.text,
+        url: step.url,
+      })),
+    };
+  }
+
+  getSpeakableWebPageSchema(config: { url: string; name: string; cssSelectors: string[] }) {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: config.name,
+      url: config.url,
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: config.cssSelectors,
+      },
+    };
+  }
+
+  getQAPageSchema(config: { question: string; answer: string; url?: string }) {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'QAPage',
+      mainEntity: {
+        '@type': 'Question',
+        name: config.question,
+        text: config.question,
+        answerCount: 1,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: config.answer,
+          url: config.url,
+        },
+      },
+    };
+  }
+
+  upsertJsonLd(id: string, payload: Record<string, unknown>) {
+    let script: HTMLScriptElement | null = this.document.querySelector(
+      `script[type='application/ld+json'][data-dd-schema='${id}']`,
+    );
+
+    if (!script) {
+      script = this.document.createElement('script');
+      script.type = 'application/ld+json';
+      script.setAttribute('data-dd-schema', id);
+      this.document.head.appendChild(script);
+    }
+
+    script.text = JSON.stringify(payload);
+  }
+
+  removeJsonLd(id: string) {
+    const script: HTMLScriptElement | null = this.document.querySelector(
+      `script[type='application/ld+json'][data-dd-schema='${id}']`,
+    );
+
+    script?.remove();
   }
 }
