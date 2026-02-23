@@ -1,4 +1,15 @@
-<div class="min-h-screen bg-slate-50 flex items-center justify-center p-6">
+<div class="min-h-screen bg-slate-50 flex flex-col items-center justify-center gap-6 p-6">
+  <div class="p-6 w-full bg-white rounded-2xl text-center">
+    <h3>Class Availability</h3>
+    <p>Regular group classes take place from <b>July to October</b> and <b>December to February</b>.
+      <br>
+      During the rest of the year, sessions are available on request as private classes for one person, a couple, or
+      small
+      private groups, taking place on the beach.
+
+    </p>
+  </div>
+
   <div class="w-full max-w-lg bg-white rounded-2xl shadow-xl p-8 border border-slate-100">
 
     <header class="mb-8 text-center">
@@ -68,9 +79,9 @@
             class="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all appearance-none cursor-pointer"
             [class.border-red-500]="formSubmitted() && bookingForm.get('pack')?.invalid">
             <option value="">Choose a pack...</option>
-            <option value="1">Single Class</option>
-            <option value="4">4 Classes + 1 Event</option>
-            <option value="8">8 Classes + 2 Events</option>
+            <option value="1">Private Class</option>
+            <!-- <option value="4">4 Classes + 1 Event</option>
+            <option value="8">8 Classes + 2 Events</option> -->
             <option value="group">Group class</option>
           </select>
 
