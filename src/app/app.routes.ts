@@ -228,6 +228,69 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/passes/passes').then((m) => m.Passes),
   },
   {
+    path: 'business-solutions',
+    title: 'Diani Business Solutions | Dance Events & Partnerships for Hotels and Agencies',
+    data: {
+      seo: {
+        breadcrumb: 'Business Solutions',
+        description:
+          'Custom dance events, shows, and partnership opportunities for hotels, resorts, and travel agencies in Diani Beach. Enhance your guest experience and generate additional revenue.',
+        keywords:
+          'diani business solutions, hotel entertainment diani, resort activities kenya, travel agency partnerships diani, dance events for hotels, guest experiences diani',
+        service: {
+          name: 'Diani Dance Business Solutions',
+          description:
+            'Customized dance experiences and partnership models for businesses in Diani Beach, including hotels, resorts, travel agencies, and event planners.',
+          areaServed: 'Diani Beach',
+          offers: [
+            {
+              name: 'Custom Dance Events',
+              description:
+                'Tailored dance classes, social events, or themed experiences designed for hotel and resort guests.',
+              url: 'https://dianidance.com/business-solutions',
+            },
+            {
+              name: 'Professional Dance Shows',
+              description:
+                'Live performances by professional dancers for entertainment programs, special events, or private functions.',
+              url: 'https://dianidance.com/business-solutions',
+            },
+            {
+              name: 'Guest Activity Programs',
+              description:
+                'Ongoing collaboration to include dance activities as part of your regular guest experience offering.',
+              url: 'https://dianidance.com/business-solutions',
+            },
+            {
+              name: 'Referral Partnership Program',
+              description:
+                'Earn commission by referring your clients to Diani Dance experiences while we handle the full service delivery.',
+              url: 'https://dianidance.com/business-solutions',
+            },
+          ],
+        },
+        faqs: [
+          {
+            question: 'Which businesses can partner with Diani Dance?',
+            answer:
+              'We work with hotels, resorts, travel agencies, tour operators, villa hosts, beach clubs, and event planners looking to enhance their client experience.',
+          },
+          {
+            question: 'How does the commission model work?',
+            answer:
+              'Partners receive a commission for each client referred to our services. We manage the full experience while you generate additional revenue.',
+          },
+          {
+            question: 'Can events be customized for our brand or guests?',
+            answer:
+              'Yes, all events are fully customizable in terms of dance style, format, group size, and setting to match your brand and audience.',
+          },
+        ],
+      },
+    },
+    loadComponent: () => import('./pages/b2b/b2b').then((m) => m.B2B),
+  },
+  {
     path: 'booking',
     title: 'Book a Diani Beach Activity | Diani Dance',
     data: {

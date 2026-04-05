@@ -14,6 +14,7 @@ export class Navbar {
     // { path: '/about-us', label: 'ABOUT US' },
     { path: '/classes', label: 'CLASSES & EVENTS' },
     { path: '/packages', label: 'PACKAGES' },
+    { path: '/business-solutions', label: 'BUSINESS SOLUTIONS' },
     { path: '/contact', label: 'CONTACT' },
   ];
 
