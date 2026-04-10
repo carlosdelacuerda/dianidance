@@ -9,7 +9,7 @@ import { FormsService } from './services/forms.service';
 import { LoadingService } from './services/loading.service';
 import { MetaService } from './services/meta.service';
 import { SchemaService } from './services/schema.service';
-
+import { AnalyticsService } from './services/analytics.service'; // Ajusta la ruta
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -27,8 +27,10 @@ export class AppComponent implements OnInit {
   private activatedRoute = inject(ActivatedRoute);
   private metaService = inject(MetaService);
   private schemaService = inject(SchemaService);
+  private analytics = inject(AnalyticsService);
 
   ngOnInit(): void {
+    this.analytics.trackPageViews();
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => this.updateMetadataFromRoute());
