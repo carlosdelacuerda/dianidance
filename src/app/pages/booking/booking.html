@@ -1,5 +1,5 @@
 <div class="min-h-screen bg-slate-50 flex flex-col items-center justify-center gap-6 p-6">
-  <div class="p-6 w-full bg-white rounded-2xl text-center">
+  <!-- <div class="p-6 w-full bg-white rounded-2xl text-center">
     <h3>Class Availability</h3>
     <p>Regular group classes take place from <b>July to October</b> and <b>December to February</b>.
       <br>
@@ -8,7 +8,7 @@
       private groups, taking place on the beach.
 
     </p>
-  </div>
+  </div> -->
 
   <div class="w-full max-w-lg bg-white rounded-2xl shadow-xl p-8 border border-slate-100">
 
@@ -82,8 +82,8 @@
             [class.border-red-500]="formSubmitted() && bookingForm.get('pack')?.invalid">
             <option value="">Choose a pack...</option>
             <option value="1">Private Class</option>
-            <!-- <option value="4">4 Classes + 1 Event</option>
-            <option value="8">8 Classes + 2 Events</option> -->
+            <option value="4">4 Classes + 1 Event</option>
+            <option value="8">8 Classes + 2 Events</option>
             <option value="group">Group class</option>
           </select>
 
@@ -163,6 +163,10 @@
         class="w-full mt-4 bg-brand-primary cursor-pointer text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-bg-soft  transition-all active:scale-[0.98]">
         Confirm Booking
       </button>
+      @if (formSubmitted() === true && bookingForm.invalid) {
+      <p class="text-sm text-red-500 mt-3 text-center font-medium">
+        Please review the fields marked in red.
+      </p>}
     </form>
 
     <p class="text-center text-xs text-slate-400 mt-6 uppercase tracking-widest">

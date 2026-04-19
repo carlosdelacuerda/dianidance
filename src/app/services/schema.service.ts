@@ -30,7 +30,7 @@ export class SchemaService {
       '@type': 'DanceSchool',
       name: 'Diani Dance',
       description:
-        'Fun and unique things to do in Diani Beach with professional Latin and African dance classes. Perfect for tourists, couples, and groups looking for an unforgettable experience in Kenya.',
+        'Fun and unique things to do in Diani Beach with  African and Latin  dance classes and events. Perfect for tourists, couples, and groups looking for an unforgettable experience in Kenya.',
       url: 'https://dianidance.com',
       telephone: '+254748191194',
       email: 'hi@dianidance.com',

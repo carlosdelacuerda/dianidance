@@ -24,7 +24,7 @@ export class Booking implements OnInit {
   dolarsPrice = signal(0);
   khsPrice = signal(0);
 
-  hours = ['8am - 9am', '11am - 12pm', '4pm - 5pm', '6pm - 7pm'];
+  hours = ['Morning', 'Afternoon ', 'Evening ', 'Night '];
 
   bookingForm!: FormGroup;
 
