@@ -2,9 +2,6 @@ import { Injectable, inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
-// Esto le dice a TypeScript que 'gtag' existe globalmente en el index.html
-declare let gtag: Function;
-
 @Injectable({
   providedIn: 'root',
 })
@@ -14,6 +11,22 @@ export class AnalyticsService {
 
   constructor() {}
 
+  private get isBrowser(): boolean {
+    return typeof window !== 'undefined';
+  }
+
+  private get hasGtag(): boolean {
+    return this.isBrowser && typeof (window as any).gtag === 'function';
+  }
+
+  private sendGtag(...args: unknown[]) {
+    if (!this.hasGtag) {
+      return;
+    }
+
+    (window as any).gtag(...args);
+  }
+
   /**
    * Escucha los cambios de ruta y los envía a Google Analytics
    */
@@ -21,7 +34,7 @@ export class AnalyticsService {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        gtag('config', this.trackingId, {
+        this.sendGtag('config', this.trackingId, {
           page_path: event.urlAfterRedirects,
         });
       });
@@ -31,6 +44,6 @@ export class AnalyticsService {
    * Método extra para trackear eventos manuales (ej: clics en botones)
    */
   trackEvent(eventName: string, params: object) {
-    gtag('event', eventName, params);
+    this.sendGtag('event', eventName, params);
   }
 }
